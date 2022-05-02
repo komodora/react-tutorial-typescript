@@ -56,3 +56,8 @@ npx create-react-app {project-name} --template typescript
 ```
 npm init @eslint/config
 ```
+
+### 追加
+```
+npm install -D eslint-config-airbnb-typescript
+```

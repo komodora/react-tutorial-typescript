@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    // "stylelint.vscode-stylelint",
+    // "ionutvmi.path-autocomplete",
+    // "pucelle.vscode-css-navigation",
+    // "clinyong.vscode-css-modules",
+    // "formulahendry.auto-rename-tag",
+    // "oderwat.indent-rainbow",
+  ]
+}
