@@ -6,8 +6,11 @@ module.exports = {
   extends: [
     'react-app',
     'react-app/jest',
-    'plugin:react/recommended',
     'airbnb',
+    'airbnb-typescript',
+    // 'airbnb/hooks',
+    'plugin:react/recommended',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,14 +19,12 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/function-component-definition': [2, { namedComponents: ['arrow-function', 'function-declaration'] }],
   },
 };
