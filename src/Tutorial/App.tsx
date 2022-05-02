@@ -1,10 +1,15 @@
-import React from 'react';
 import './index.css';
 
-const Square: React.FC = () => <button className="square">{/* TODO */}</button>;
+const Square = () => (
+  <button className="square" type="submit">
+    {/* TODO */}
+  </button>
+);
 
 const Board = () => {
-  const renderSquare = () => <Square />;
+  const renderSquare = () => {
+    <Square />;
+  };
 
   const status = 'Next player: X';
 
@@ -42,6 +47,4 @@ const Game = () => (
   </div>
 );
 
-export default function Tutorial() {
-  return <Game />;
-}
+export default Game;
