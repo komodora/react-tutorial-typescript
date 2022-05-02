@@ -1,16 +1,20 @@
+import { FC } from 'react';
 import './index.css';
 
-const Square = () => (
-  <button className="square" type="submit">
-    {/* TODO */}
+interface SquareProps {
+  value: number
+  }
+
+/* eslint-disable */
+const Square: FC<SquareProps> = (props) => (
+  <button className="square">
+    {props.value}
   </button>
 );
+/* eslint-enable */
 
-const Board = () => {
-  const renderSquare = () => {
-    <Square />;
-  };
-
+const Board: FC = () => {
+  const renderSquare = (i: number) => <Square value={i} />
   const status = 'Next player: X';
 
   return (
@@ -18,8 +22,8 @@ const Board = () => {
       <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}
-        {renderSquare(2)}
         {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
         {renderSquare(3)}
@@ -35,7 +39,7 @@ const Board = () => {
   );
 };
 
-const Game = () => (
+const Game: FC = () => (
   <div className="game">
     <div className="game-board">
       <Board />
