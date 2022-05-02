@@ -4,6 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'react-app',
+    'react-app/jest',
     'plugin:react/recommended',
     'airbnb',
   ],
@@ -20,5 +22,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
+    'react/function-component-definition': [2, { namedComponents: ['arrow-function', 'function-declaration'] }],
   },
 };
