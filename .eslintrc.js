@@ -26,5 +26,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/function-component-definition': [2, { namedComponents: ['arrow-function', 'function-declaration'] }],
+    '@typescript-eslint/no-use-before-define': 'off',
+    'arrow-body-style': 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
 };
