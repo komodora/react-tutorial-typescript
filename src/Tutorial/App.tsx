@@ -6,6 +6,26 @@ interface SquareProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
+const calculateWinner = (squares: String[]) => {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i += 1) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+};
+
 /* eslint-disable */
 const Square: FC<SquareProps> = (props) => (
   <button className="square" onClick={props.onClick}>
@@ -20,13 +40,23 @@ const Board: FC = () => {
 
   const handleClick = (i: number) => {
     const tmpSquares = squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
     tmpSquares[i] = xIsNext ? 'X' : 'O';
     setSquares(tmpSquares);
     setXIsNext(!xIsNext);
   };
 
   const renderSquare = (i: number) => <Square value={squares[i]} onClick={() => handleClick(i)} />;
-  const status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = `Winner: ${winner}`;
+  } else {
+    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+  }
 
   return (
     <div>
