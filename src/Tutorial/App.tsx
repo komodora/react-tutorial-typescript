@@ -54,11 +54,12 @@ const Game: FC = () => {
         squares: Array(9).fill(null),
       },
     ],
+    stepNumber: 0,
     xIsNext: true,
   });
 
   const handleClick = (i: number) => {
-    const { history } = state;
+    const history = state.history.slice(0, state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
@@ -71,13 +72,34 @@ const Game: FC = () => {
           squares,
         },
       ]),
+      stepNumber: history.length,
       xIsNext: !state.xIsNext,
     });
   };
 
+  const jumpTo = (step: number) => {
+    setState({
+      history,
+      stepNumber: step,
+      xIsNext: step % 2 === 0,
+    });
+  };
+
   const { history } = state;
-  const current = history[history.length - 1];
+  const current = history[state.stepNumber];
   const winner = calculateWinner(current.squares);
+
+  /* eslint-disable */
+  const moves = history.map((step, move) => {
+    const desc = move ? `Go to move #${move}` : 'Go to game start';
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{desc}</button>
+      </li>
+    );
+  });
+  /* eslint-enable */
+
   let status;
   if (winner) {
     status = `Winner: ${winner}`;
@@ -92,7 +114,7 @@ const Game: FC = () => {
       </div>
       <div className="game-info">
         <div>{status}</div>
-        <ol>{/* TODO */}</ol>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
