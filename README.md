@@ -46,18 +46,27 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ---
+
 以下、環境構築手順
+
 ## インストール
+
 ```
 npx create-react-app {project-name} --template typescript
 ```
 
-## eslintに関わるパッケージをインストール
+## eslint に関わるパッケージをインストール
+
 ```
 npm init @eslint/config
 ```
 
 ### 追加
+
 ```
 npm install -D eslint-config-airbnb-typescript
 ```
+
+## コーディング
+
+[参考](https://zenn.dev/roiban/articles/473f9cbf2b793a)

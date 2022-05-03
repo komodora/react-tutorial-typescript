@@ -1,16 +1,24 @@
 import { FC, useState } from 'react';
 import './index.css';
 
+//
+// 型定義
+//
+type SquareState = 'X' | 'O' | null;
+
 interface SquareProps {
-  value: string;
+  value: SquareState;
   onClick: () => void;
 }
 
 interface BoardProps {
-  squares: string[];
+  squares: SquareState[];
   onClick: (i: number) => void;
 }
 
+//
+// 関数コンポーネント
+//
 /* eslint-disable react/button-has-type */
 const Square: FC<SquareProps> = ({ value, onClick }) => (
   <button className="square" onClick={onClick}>
@@ -56,7 +64,6 @@ const Game: FC = () => {
     xIsNext: true,
   });
 
-  // const { history } = state;
   const current = state.history[state.stepNumber];
   const winner = calculateWinner(current.squares);
   let status: string;
@@ -120,6 +127,9 @@ const Game: FC = () => {
 
 export default Game;
 
+//
+// ヘルパー関数
+//
 const calculateWinner = (squares: String[]) => {
   const lines = [
     [0, 1, 2],

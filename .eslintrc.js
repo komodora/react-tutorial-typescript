@@ -28,6 +28,6 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: ['arrow-function', 'function-declaration'] }],
     '@typescript-eslint/no-use-before-define': 'off',
     'arrow-body-style': 'off',
-    'no-plusplus': 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
 };
