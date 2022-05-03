@@ -1,20 +1,29 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './index.css';
 
 interface SquareProps {
-  value: number
-  }
+  value: number;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
 /* eslint-disable */
 const Square: FC<SquareProps> = (props) => (
-  <button className="square">
+  <button className="square" onClick={props.onClick}>
     {props.value}
   </button>
 );
 /* eslint-enable */
 
 const Board: FC = () => {
-  const renderSquare = (i: number) => <Square value={i} />
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
+  const handleClick = (i: number) => {
+    const tmpSquares = squares.slice();
+    tmpSquares[i] = 'X';
+    setSquares(tmpSquares);
+  };
+
+  const renderSquare = (i: number) => <Square value={squares[i]} onClick={() => handleClick(i)} />;
   const status = 'Next player: X';
 
   return (
